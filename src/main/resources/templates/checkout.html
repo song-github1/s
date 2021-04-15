@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:include="header::head">
+	<!-- <meta charset="UTF-8"> -->
+</head>
+<body>
+	<div id="wrapper">
+		<div th:replace="header::#header"></div>
+		<main id="main">
+			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
+				<div class="caption">
+					<h1 class="heading text-center">结账</h1>
+				</div>
+			</section>
+			<section class="check-sec container">
+				<!-- <div class="row">
+					<div class="col-xs-12">
+						<div class="txt-wrap">
+							<p>Returning customer? <a href="#">Click here to login</a></p>
+						</div>
+						<div class="txt-wrap">
+							<p>Have a coupon?  <a href="#">Click here to enter your code</a></p>
+						</div>
+					</div>
+				</div> -->
+				<div class="row">
+					<div class="col-xs-12">
+						<form class="checkout-form text-left" action="#">
+							<fieldset>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<h2>收货地址</h2>
+										<div class="form-group">
+											<label>请选择<span class="sign"></span></label>
+											<select class="form-control">
+												<option value="0">United States</option>
+												<option value="1">United States</option>
+												<option value="2">United States</option>
+											</select>
+											<!-- <div class="holder">
+												<div class="col">
+													<label>收货人 <span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+												<div class="col">
+													<label>Last Name<span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+											</div> -->
+											<label>收货人<span class="sign">*</span></label>
+											<input class="form-control " placeholder="" type="text">
+											<label>联系电话<span class="sign">*</span></label>
+											<input class="form-control" placeholder="" type="text">
+											<label>地址<span class="sign">*</span></label>
+											<input class="form-control" placeholder="" type="text">
+											<!-- <div class="holder">
+												<div class="col">
+													<label>Email Address<span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+												<div class="col">
+													<label>Phone<span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+											</div>
+											<div class="holder">
+												<div class="col">
+													<label>Town/City<span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+												<div class="col">
+													<label>Pin code/Zip<span class="sign">*</span></label>
+													<input class="form-control element-block" placeholder="" type="text">
+												</div>
+											</div> -->
+											
+										</div>
+										<!-- <div class="form-group">
+										    <input type="checkbox" class="checkbox">
+										    <span class="check-holder">Create an Account?</span>
+										</div> -->
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										<h2>附加信息</h2>
+										<div class="form-group">
+											<label>备注</label>
+											<textarea class="form-control" placeholder="有其他要求可以填写在这里..."></textarea>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered">
+							<caption>你的订单</caption>
+							<thead>
+								<tr>
+									<th>商品</th>
+									<th>小计</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Pets Puriest  × 1</td>
+									<td>$34.00</td>
+								</tr>
+								<tr>
+									<td>Nutri Vitamin+ × 1</td>
+									<td>$40.00</td>
+								</tr>
+								<tr class="total">
+									<td>合计</td>
+									<td class="clr">$74.00</td>
+								</tr>
+								<tr class="total">
+									<td>总计</td>
+									<td class="clr">$74.00</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="payment-holder">
+							<!-- <h2>Payment Method</h2> -->
+							<form  class="payment-form" action="#" style="background-color: white; border: 0px;">
+								<!-- <div class="form-group"> 
+									<label>
+										<input type="checkbox" class="check" name="checkbox" value="value" checked>Cheque Payment
+									</label>
+									<p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+								</div>
+								<div class="form-group"> 
+									<label>
+										<input type="checkbox" class="check" name="checkbox" value="value">Direct Transfer
+									</label>
+								</div>
+								<div class="form-group block">
+									<label>
+										<input type="checkbox" class="check" name="checkbox" value="value">Paypal
+										<img src="images/img49.jpg" class="img-responsive" alt="payment-method-image">
+										<a href="#">What is Paypal?</a>
+									</label>
+								</div> -->
+								<input type="submit" value="去支付" class="text-uppercase submit-btn" style="position: relative; left: -50px;">
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- <section class="callout" style="background-image:url(images/img26.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<h2>Get 50% offer for all pet products</h2>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">coupon code : PETTY1234</a>
+						</div>
+					</div>
+				</div>
+			</section> -->
+		</main>
+		<div th:replace="footer::#footer"></div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>

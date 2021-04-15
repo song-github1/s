@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.song.PetShop.dao.CommodityMapper">
+  <resultMap id="BaseResultMap" type="com.song.PetShop.bean.Commodity">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="cphoto" jdbcType="VARCHAR" property="cphoto" />
+    <result column="mprice" jdbcType="DOUBLE" property="mprice" />
+    <result column="cprice" jdbcType="DOUBLE" property="cprice" />
+    <result column="c_btime" jdbcType="TIMESTAMP" property="cBtime" />
+    <result column="hot" jdbcType="INTEGER" property="hot" />
+    <result column="c_etime" jdbcType="TIMESTAMP" property="cEtime" />
+    <result column="csize" jdbcType="VARCHAR" property="csize" />
+    <result column="cnum" jdbcType="INTEGER" property="cnum" />
+    <result column="cdescride" jdbcType="VARCHAR" property="cdescride" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="temp1" jdbcType="VARCHAR" property="temp1" />
+    <result column="temp2" jdbcType="INTEGER" property="temp2" />
+    <result column="temp3" jdbcType="VARCHAR" property="temp3" />
+    <association property="type" column="tid" autoMapping="true" 
+			select="com.song.PetShop.dao.TypeMapper.selectByPrimaryKey" fetchType="lazy">
+	</association>
+	<collection property="favorite" column="cid" autoMapping="true" 
+			select="com.song.PetShop.dao.FavoriteMapper.selectByCid" fetchType="lazy">
+	</collection>
+  </resultMap>
+  <select id="selectByTwelve" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    order by  rand() limit 8
+  </select>
+  <select id="selectByThree" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    order by  rand() limit 3
+  </select>
+  <select id="selectByCname" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where cname like '%${cname}%'
+  </select>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, cname, cphoto, mprice, cprice, c_btime, hot, c_etime, csize, cnum, cdescride, 
+    tid, sid, temp1, temp2, temp3
+  </sql>
+  <select id="selectByExample" parameterType="com.song.PetShop.bean.CommodityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from commodity
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.song.PetShop.bean.CommodityExample">
+    delete from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.song.PetShop.bean.Commodity">
+    insert into commodity (cid, cname, cphoto, 
+      mprice, cprice, c_btime, 
+      hot, c_etime, csize, 
+      cnum, cdescride, tid, 
+      sid, temp1, temp2, 
+      temp3)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{cphoto,jdbcType=VARCHAR}, 
+      #{mprice,jdbcType=DOUBLE}, #{cprice,jdbcType=DOUBLE}, #{cBtime,jdbcType=TIMESTAMP}, 
+      #{hot,jdbcType=INTEGER}, #{cEtime,jdbcType=TIMESTAMP}, #{csize,jdbcType=VARCHAR}, 
+      #{cnum,jdbcType=INTEGER}, #{cdescride,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, 
+      #{sid,jdbcType=INTEGER}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=INTEGER}, 
+      #{temp3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.song.PetShop.bean.Commodity">
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="cphoto != null">
+        cphoto,
+      </if>
+      <if test="mprice != null">
+        mprice,
+      </if>
+      <if test="cprice != null">
+        cprice,
+      </if>
+      <if test="cBtime != null">
+        c_btime,
+      </if>
+      <if test="hot != null">
+        hot,
+      </if>
+      <if test="cEtime != null">
+        c_etime,
+      </if>
+      <if test="csize != null">
+        csize,
+      </if>
+      <if test="cnum != null">
+        cnum,
+      </if>
+      <if test="cdescride != null">
+        cdescride,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="temp1 != null">
+        temp1,
+      </if>
+      <if test="temp2 != null">
+        temp2,
+      </if>
+      <if test="temp3 != null">
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cphoto != null">
+        #{cphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="mprice != null">
+        #{mprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cprice != null">
+        #{cprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cBtime != null">
+        #{cBtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hot != null">
+        #{hot,jdbcType=INTEGER},
+      </if>
+      <if test="cEtime != null">
+        #{cEtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csize != null">
+        #{csize,jdbcType=VARCHAR},
+      </if>
+      <if test="cnum != null">
+        #{cnum,jdbcType=INTEGER},
+      </if>
+      <if test="cdescride != null">
+        #{cdescride,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="temp1 != null">
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        #{temp2,jdbcType=INTEGER},
+      </if>
+      <if test="temp3 != null">
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.song.PetShop.bean.CommodityExample" resultType="java.lang.Long">
+    select count(*) from commodity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update commodity
+    <set>
+      <if test="record.cid != null">
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cname != null">
+        cname = #{record.cname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cphoto != null">
+        cphoto = #{record.cphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mprice != null">
+        mprice = #{record.mprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cprice != null">
+        cprice = #{record.cprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cBtime != null">
+        c_btime = #{record.cBtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hot != null">
+        hot = #{record.hot,jdbcType=INTEGER},
+      </if>
+      <if test="record.cEtime != null">
+        c_etime = #{record.cEtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.csize != null">
+        csize = #{record.csize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cnum != null">
+        cnum = #{record.cnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.cdescride != null">
+        cdescride = #{record.cdescride,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tid != null">
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.temp1 != null">
+        temp1 = #{record.temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp2 != null">
+        temp2 = #{record.temp2,jdbcType=INTEGER},
+      </if>
+      <if test="record.temp3 != null">
+        temp3 = #{record.temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update commodity
+    set cid = #{record.cid,jdbcType=INTEGER},
+      cname = #{record.cname,jdbcType=VARCHAR},
+      cphoto = #{record.cphoto,jdbcType=VARCHAR},
+      mprice = #{record.mprice,jdbcType=DOUBLE},
+      cprice = #{record.cprice,jdbcType=DOUBLE},
+      c_btime = #{record.cBtime,jdbcType=TIMESTAMP},
+      hot = #{record.hot,jdbcType=INTEGER},
+      c_etime = #{record.cEtime,jdbcType=TIMESTAMP},
+      csize = #{record.csize,jdbcType=VARCHAR},
+      cnum = #{record.cnum,jdbcType=INTEGER},
+      cdescride = #{record.cdescride,jdbcType=VARCHAR},
+      tid = #{record.tid,jdbcType=INTEGER},
+      sid = #{record.sid,jdbcType=INTEGER},
+      temp1 = #{record.temp1,jdbcType=VARCHAR},
+      temp2 = #{record.temp2,jdbcType=INTEGER},
+      temp3 = #{record.temp3,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.song.PetShop.bean.Commodity">
+    update commodity
+    <set>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cphoto != null">
+        cphoto = #{cphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="mprice != null">
+        mprice = #{mprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cprice != null">
+        cprice = #{cprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cBtime != null">
+        c_btime = #{cBtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hot != null">
+        hot = #{hot,jdbcType=INTEGER},
+      </if>
+      <if test="cEtime != null">
+        c_etime = #{cEtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csize != null">
+        csize = #{csize,jdbcType=VARCHAR},
+      </if>
+      <if test="cnum != null">
+        cnum = #{cnum,jdbcType=INTEGER},
+      </if>
+      <if test="cdescride != null">
+        cdescride = #{cdescride,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="temp1 != null">
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        temp2 = #{temp2,jdbcType=INTEGER},
+      </if>
+      <if test="temp3 != null">
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.song.PetShop.bean.Commodity">
+    update commodity
+    set cname = #{cname,jdbcType=VARCHAR},
+      cphoto = #{cphoto,jdbcType=VARCHAR},
+      mprice = #{mprice,jdbcType=DOUBLE},
+      cprice = #{cprice,jdbcType=DOUBLE},
+      c_btime = #{cBtime,jdbcType=TIMESTAMP},
+      hot = #{hot,jdbcType=INTEGER},
+      c_etime = #{cEtime,jdbcType=TIMESTAMP},
+      csize = #{csize,jdbcType=VARCHAR},
+      cnum = #{cnum,jdbcType=INTEGER},
+      cdescride = #{cdescride,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=INTEGER},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

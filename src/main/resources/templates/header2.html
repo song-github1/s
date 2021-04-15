@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+	<head th:fragment="head">
+		<!-- set the encoding of your site -->
+		<meta charset="utf-8">
+		<!-- set the viewport width and initial-scale on mobile devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- set the price table -->
+		<meta name="Petshop" content="yes">
+		<!-- set the HandheldFriendly -->
+		<meta name="HandheldFriendly" content="True">
+		<!-- set the price table style -->
+		<meta name="Petshop" content="black">
+		<!-- set the description -->
+		<meta name="description" content="">
+		<!-- include the site stylesheet -->
+		<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600%7CNunito:400,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
+		<link rel="stylesheet" type="text/css" href="css/plugins.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/xuan.css">
+		<link rel="stylesheet" type="text/css" href="css/nav.css">
+		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+		<!-- 个人中心 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+
+		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.bootcss.com/amazeui/2.5.1/css/amazeui.css" rel="stylesheet" type="text/css" />
+
+		<link href="../css/personal.css" rel="stylesheet" type="text/css">
+		<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/nav.js"></script>
+		<script src="https://cdn.bootcss.com/amazeui/2.5.1/js/amazeui.min.js"></script>
+		
+	</head>
+	<body>
+		
+		<header id="header">
+			<!--右侧悬浮菜单-->
+			<!-- <div class="xuan">
+				<ul class="icon">
+					<li class="up" title="上一页"></li>
+					<li class="kf"></li>
+					<li class="qq"></li>
+					<li class="tel"></li>
+					<li class="wx"></li>
+					<li class="down" title="下一页"></li>
+				</ul>
+				<ul class="info">
+					<li class="qq">
+						<p style="font-size: 15px;">如果想用QQ进行沟通，请点我<a href="http://wpa.qq.com/msgrd?v=3&uin=3347898920&site=qq&menu=yes" target="_blank">QQ咨询</a></p>
+					</li>
+					<li class="tel">
+						<p style="font-size: 15px;">也可以电话联系我们，咨询热线：<br>18359635201<br>
+					</li>
+					<li class="wx">
+						<div class="img" style="height: auto;"><img src="images/1441956938.png" /></div>
+					</li>
+				</ul>
+			</div>
+			<div id="btn" class="index_cy"></div> -->
+			<div class="leftNav-item">
+				<ul>
+					<li title="购物车">
+						<i class="fa fa-shopping-cart"></i>
+						<a href="javascript:void(0)" class="rota">购物车</a>
+					</li>
+					<li title="帮助中心">
+						<i class="fa fa-location-arrow"></i>
+						<a href="javascript:void(0)" class="rota">帮助中心</a>
+					</li>
+					<li title="在线客服">
+						<i class="fa fa-comments-o"></i>
+						<a href="/"class="rota">在线客服</a>
+					</li>
+					
+					<!-- http://wpa.qq.com/msgrd?v=3&uin=3347898920&site=qq&menu=yes -->
+					<li title="QQ咨询">
+						<i class="fa fa-qq"></i>
+						<a href="tencent://Message/?Uin=3347898920&amp;websiteName=sc.chinaz.com=&amp;Menu=yes" target="_blank" class="rota">QQ咨询</a>
+					</li>
+					<!-- <li lay-data="img" data-fooc="images/zizhu.png">
+						<i class="fa fa-weixin"></i>
+						<a href="javascript:;" class="rota">微信咨询</a>
+					</li> --> 
+					<li title="返回顶部" class="for-top">
+						<i class="fa fa-arrow-up"></i>
+						<a href="javascript:;" class="rota">去顶部</a>
+					</li>
+				</ul>
+	        </div>
+			<div class="header-area container">
+				<div class="row">
+					<div class="col-xs-12 hidden visible-xs">
+						<ul class="list-unstyled social-network text-center">
+							<li><a href="mailto:XXX"><i class="icon-message" aria-hidden="true"></i></a></li>
+							<li><a href="tell:1345678000"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="icon-user" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="icon-cart" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-6 hidden-xs">
+						<ul class="list-unstyled contact-info">
+							<li>
+								<a href="mailto:XXX" class="icon pull-left"><i class="icon-message"></i></a>
+								<div class="align-left pull-left hidden-xs">
+									<strong>邮箱</strong>
+									<a href="mailto:XXX">1250585963@qq.com</a>
+								</div>
+							</li>
+							<li>
+								<a href="tell:1345678000" class="icon pull-left"><i class="icon-phone-call"></i></a>
+								<div class="align-left pull-left hidden-xs">
+									<!-- <strong style="padding-top: 7px">在线客服</strong> -->
+									<strong>电话</strong>
+									<a href="mailto:XXX">18359635201</a>
+								</div>
+							</li>
+							<li>
+								<a href="tell:1345678000" class="icon pull-left"><i class="icon-help"></i></a>
+								<div class="align-left pull-left hidden-xs">
+									<strong style="margin-top: 7px;">帮助中心</strong>
+									<a href="tell:1345678000"></a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-6 hidden-xs">
+						<div class="social-list" style="margin-left: 50px;">
+							<ul class="list-unstyled social-network">
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							</ul>
+							<ul class="list-unstyled account-cart">
+								<li><a href="#"><i class="icon-user"></i><span class="hidden-xs" th:text="${session.user}==null?欢迎游客，:|欢迎，用户${session.user.uname}"><span></span></span></i></a></li>
+								<li th:if="${session.user}==null" style="margin-left: -5px;"><a href="/login" ><span>您可<span style="color:red; margin-left: 0px;" id="zhuce">注册</span></span></a></li>
+								<li th:if="${session.user}==null" style="margin-left: -10px;"><a href="/login"><span>和<span style="color:red; margin-left: 0px;" id="denglu">登录</span></span></a></li>
+								<li><a href="/cart"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="logo pull-left hidden visible-xs">
+							<a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a>
+						</div>
+						<a href="#" class="nav-opener pull-right hidden visible-xs"><i class="fa fa-bars"></i></a>
+						<nav id="nav">
+							<ul class="list-unstyled text-uppercase menu-left">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<li style="margin-left: -90px;"><a href="/">首页</a></li>				
+								
+								<li style="margin-left: 60px;"><a href="/gallery">画廊</a></li>
+								<li style="margin-left: 60px;"><a href="/services">服务</a></li>
+								<li style="margin-left: 60px;">
+									<a href="/information">个人中心<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="single-blog.html">我的资料</a></li>
+										<li><a href="single-blog.html">我的订单</a></li>
+										<li><a href="single-blog.html">我的收藏</a></li>
+										<li><a href="single-blog.html">完善地址</a></li>
+										<li><a href="single-blog.html">我的地址</a></li>
+										<li><a href="/logout">退出登录</a></li>
+									</ul>
+								</li>
+								<li style="margin-left: 60px;">
+									<a href="javascript:void(0);">更多<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="/about">关于我们</a></li>
+										<li><a href="/contact">联系我们</a></li>
+									</ul>
+								</li>
+								<li style="position: relative;left: -5px;" class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
+								
+								<!--<li>
+									<a href="javascript:void(0);">pages <i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="services.html">services</a></li>
+										<li><a href="aboutus.html">about us</a></li>
+										<li><a href="gallery.html">Gallery</a></li>
+										<li><a href="404page.html">404 page</a></li>
+									</ul>
+								</li>-->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<li style="margin-left: -60px;">
+									<a href="javascript:void(0);">宠物狗<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="shop.html">全部</a></li>
+										<li><a href="cart.html">小型犬</i></a></li>
+										<li><a href="cart.html">中型犬</i></a></li>
+										<li><a href="cart.html">大型犬</i></a></li>
+									</ul>
+								</li>
+								<li style="margin-left: 50px;">
+									<a href="javascript:void(0);">宠物猫<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="shop.html">全部</a></li>
+										<li><a href="cart.html">小型猫</i></a></li>
+										<li><a href="cart.html">中型猫</i></a></li>
+										<li><a href="cart.html">大型猫</i></a></li>
+									</ul>
+								</li>
+								<li style="margin-left: 50px;">
+									<a href="javascript:void(0);">宠物用品<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="shop.html">全部</a></li>
+										<li><a href="cart.html">猫类用品</i></a></li>
+										<li><a href="cart.html">狗类用品</i></a></li>
+									</ul>
+								</li>
+								<li style="margin-left: 50px;">
+									<a href="javascript:void(0);">宠物饮食<i class="fa fa-angle-down"></i></a>
+									<ul class="list-unstyled text-uppercase dropdown">
+										<li><a href="shop.html">全部</a></li>
+										<li><a href="cart.html">猫类饮食</i></a></li>
+										<li><a href="cart.html">狗类饮食</i></a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>

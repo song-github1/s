@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head th:include="header::head">
+	<!-- <meta charset="UTF-8"> -->
+</head>
+<body>
+	<div id="wrapper">
+		<div th:replace="header::#header"></div>
+		<main id="main">
+			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
+				<div class="caption">
+					<h1 class="heading text-center">服务</h1>
+				</div>
+			</section>
+			<section class="feature-sec container style2">
+				<div class="row">
+					<header class="col-xs-12 header text-center">
+						<h2 class="heading text-uppercase">为什么选择我们</h2>
+						<span class="icon"><i class="icon-bone"></i></span>
+					</header>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="feature-col">
+							<span class="icon round"><i class="icon-bookmark"></i></span>
+							<h3 class="heading2">质量 &amp; 售后</h3>
+							<p>质量绝对保证，宠物绝对健康<br class="hidden-xs">有问题随时找我们</p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="feature-col">
+							<span class="icon round"><i class="icon-shield"></i></span>
+							<h3 class="heading2">保险 &amp; 检查</h3>
+							<p>宠物以及宠物用品都是通过检查才出售<br class="hidden-xs">绝对保险</p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="feature-col">
+							<span class="icon round"><i class="icon-home"></i></span>
+							<h3 class="heading2">免费咨询</h3>
+							<p>我们提供免费的宠物咨询<br class="hidden-xs">如果您有任何疑惑</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="services-sec bg-full" style="background-image:url(images/img03.jpg);">
+				<div class="container">
+					<div class="row">
+						<header class="col-xs-12 header text-center">
+							<h2 class="heading text-uppercase">服务</h2>
+							<span class="icon"><i class="icon-bone"></i></span>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img04.jpg" alt="Pet Adoption" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物收养</h3>
+									<p>为宠物献出自己的一份力</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">阅读更多<i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img05.jpg" alt="Pet Grooming" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物美容</h3>
+									<p>将宠物打扮得干净可爱</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">阅读更多<i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img06.jpg" alt="Pet Daycare" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物日托</h3>
+									<p>帮您照顾你的宠物</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">阅读更多<i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img07.jpg" alt="Dog Training" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">训练</h3>
+									<p>培训您的狗</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">阅读更多<i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="appointment-sec container">
+				<div class="row">
+					<header class="col-xs-12 header text-center">
+						<h2 class="heading text-uppercase">预约</h2>
+						<span class="icon"><i class="icon-bone"></i></span>
+					</header>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-10 col-md-offset-1">
+						<form class="appointment-form text-center" action="#">
+							<fieldset>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="姓名" type="text">
+									</div>
+									<div class="col">
+										<input class="form-control" placeholder="预约时间" type="text">
+										<span class="icon icon-calendar"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="宠物类型" type="text">
+										<span class="icon fa fa-paw"></span>
+									</div>
+									<div class="col">
+										<input class="form-control" placeholder="邮箱" type="email">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="持续时间" type="text">
+										<span class="icon icon-clock"></span>
+									</div>
+									<div class="col">
+										<select class="form-control">
+											<option value="0">宠物收养</option>
+											<option value="1">宠物美容</option>
+											<option value="2">宠物日托</option>
+											<option value="2">训练</option>
+										</select>
+									</div>
+								</div>
+								<button class="btn-primary text-center text-uppercase" type="submit">确定</button>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</section>
+			<!-- <section class="callout" style="background-image:url(images/img26.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<h2>Get 50% offer for all pet products</h2>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">coupon code : PETTY1234</a>
+						</div>
+					</div>
+				</div>
+			</section> -->
+		</main>
+		<div th:replace="footer::#footer"></div>
+	</div>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/nav.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>

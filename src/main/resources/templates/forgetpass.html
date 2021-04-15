@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>找回密码</title>
+
+<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style_login.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/zzsc.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.alertable.css">
+<link rel="stylesheet" type="text/css" href="css/weui.min.css">
+<style type="text/css">
+	.screenbg{position:fixed;bottom:0;left:0;z-index:-999;overflow:hidden;width:100%;height:100%;min-height:100%;}
+	.screenbg ul li{display:block;list-style:none;position:fixed;overflow:hidden;top:0;left:0;width:100%;height:100%;z-index:-1000;float:right;}
+	.screenbg ul a{left:0;top:0;width:100%;height:100%;display:inline-block;margin:0;padding:0;cursor:default;}
+	.screenbg a img{vertical-align:middle;display:inline;border:none;display:block;list-style:none;position:fixed;overflow:hidden;top:0;left:0;width:100%;height:100%;z-index:-1000;float:right;}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".screenbg ul li").each(function(){
+		$(this).css("opacity","0");
+	});
+	$(".screenbg ul li:first").css("opacity","1");
+	var index = 0;
+	var t;
+	var li = $(".screenbg ul li");	
+	var number = li.size();
+	function change(index){
+		li.css("visibility","visible");
+		li.eq(index).siblings().animate({opacity:0},3000);
+		li.eq(index).animate({opacity:1},3000);
+	}
+	function show(){
+		index = index + 1;
+		if(index<=number-1){
+			change(index);
+		}else{
+			index = 0;
+			change(index);
+		}
+	}
+	t = setInterval(show,8000);
+	//根据窗口宽度生成图片宽度
+	var width = $(window).width();
+	$(".screenbg ul img").css("width",width+"px");
+});
+</script>
+</head>
+<body>
+
+
+<div class="materialContainer">
+	<div class="box">
+		<div class="title">找回密码</div>
+		<div class="input">
+			<label for="foremail">邮箱*</label>
+			<input type="text" name="foremail" id="foremail">
+			<!-- <button style="height: 40px; position: relative;left: 278px;top: -30px; height: 30px; " ><img alt="" src="images/code.png" style="width: auto;height: auto;max-width: 100%;max-height: 100%;"></button> -->
+			<input style="width:117px; height:40px; background-color: #ED2553; color:white; font-weight:bold; margin-left: 243px; margin-top: -50px;" type="button" class="weui_btn weui_btn weui_btn_mini weui_btn_primary" value="获取验证码"  onclick="getcode(this)">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="forpass">新密码*</label>
+			<input type="password" name="forpass" id="forpass">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="forcode">邮箱验证码*</label>
+			<input type="text" name="forcode" id="forcode">
+			<span class="spin"></span>
+		</div>
+		<div class="button login">
+			<button onclick="fpass()">
+				<span>确定</span>
+				<i class="fa fa-check"></i>
+			</button>
+		</div>
+	</div>
+
+	
+
+</div>
+<div class="screenbg">
+	<ul>
+		<li><a href="javascript:;"><img src="images/img01.jpg"></a></li>
+		<li><a href="javascript:;"><img src="images/img50.jpg"></a></li>
+	</ul>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/index.js"></script>
+
+<style>
+.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+</style>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src='js/velocity.min.js'></script>
+<script src='js/velocity.ui.min.js'></script>
+<script src="js/jquery.alertable.js"></script>
+<script type="text/javascript">
+function getcode(obj){
+	/* 计时 */
+    var obj = $(obj);
+    obj.attr("disabled","disabled");/*按钮倒计时*/
+    var time = 60;
+    var set=setInterval(function(){
+    obj.val(--time+"(s)");
+    }, 1000);/*等待时间*/
+    setTimeout(function(){
+	obj.attr("disabled",false).val("重新获取验证码");/*倒计时*/
+	clearInterval(set);
+	}, 60000);
+	/* 发送请求 */
+	var uemail=$("#foremail").val();
+	$.post("fgetcode",{uemail:uemail},function(result){
+		if(result==1){
+			$.alertable.alert('发送成功', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+				  } 
+				});
+			clearInterval(set);
+			obj.attr("disabled",false).val("获取验证码");/*倒计时*/
+		}else{
+			$.alertable.alert('发送失败，请检查邮箱是否正确', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+				  } 
+				});
+			clearInterval(set);
+			obj.attr("disabled",false).val("重新获取验证码");/*倒计时*/
+		}
+	})
+	
+}
+
+function fpass(){
+	var uemail=$("#foremail").val();
+	var upass=$("#forpass").val();
+	var forcode=$("#forcode").val();
+	$.post("dofpass",{uemail:uemail,upass:upass,forcode:forcode},function(result){
+		if(result==2){
+			$.alertable.alert('该邮箱未注册，前往注册', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+				  } 
+				});
+		}else if(result==1){
+			$.alertable.alert('重置密码成功，前往登录', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+					window.location.href = "/login";
+				  } 
+				});
+			
+		}else if(result==3){
+			$.alertable.alert('验证失败，请重新填写验证码', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+				  } 
+				});
+		}else{
+			$.alertable.alert('重置密码失败，请检查', {
+				  show: function() {
+					$(this.overlay).velocity('transition.fadeIn');        
+					$(this.modal).velocity('transition.flipBounceYIn');
+				  },
+				  hide: function() {
+					$(this.overlay).velocity('transition.fadeOut');
+					$(this.modal).velocity('transition.perspectiveUpOut');
+				  } 
+				});
+		}
+	})
+}
+</script>
+</body>
+</html>
