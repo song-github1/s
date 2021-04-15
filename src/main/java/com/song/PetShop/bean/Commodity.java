@@ -9,6 +9,9 @@ public class Commodity {
     private String cname;
 
     private String cphoto;
+    
+    //数据库没有该字段
+    private String cphoto2;
 
     private Double mprice;
 
@@ -42,7 +45,15 @@ public class Commodity {
     
     
     
-    public List<Favorite> getFavorite() {
+    public String getCphoto2() {
+		return cphoto2;
+	}
+
+	public void setCphoto2(String cphoto2) {
+		this.cphoto2 = cphoto2;
+	}
+
+	public List<Favorite> getFavorite() {
 		return favorite;
 	}
 

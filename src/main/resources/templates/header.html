@@ -25,6 +25,22 @@
 		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="js/nav.js"></script>
+		<!-- 放大 -->
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/1.10.2/jquery.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+		<link rel="stylesheet" href="css/jqzoom.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="js/jquery.jqzoom.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		$(".jqzoom").jqueryzoom({
+						xzoom: 250, //zooming div default width(default width value is 200)
+						yzoom: 250, //zooming div default width(default height value is 200)
+						offset: 10, //zooming div default offset(default offset value is 10)
+						position: "right" //zooming div position(default position value is "right")
+					});
+		});
+		</script>
 	</head>
 	<body>
 		

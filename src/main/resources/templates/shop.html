@@ -26,7 +26,7 @@
 											<li><a th:id="'favo'+${c.cid}" th:onclick="'dofavorite('+${c.cid}+')'"  th:style="${not #lists.isEmpty(c.favorite)}?'background-color: red;'"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
 											<!-- <input type="hidden" id="cid" th:value="${c.cid}"> -->
 											<!-- <li><a href="#"><i class="icon-refresh"></i></a></li> -->
-											<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+											<li><a th:href="'/shopdetail_'+${c.cid}"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -131,7 +131,7 @@
 								<ul class="list-unstyled feature-list">
 									<li th:each="c:${clist2}">
 										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" th:src="${c.cphoto}" alt="image"></a>
+											<a th:href="'/shopdetail_'+${c.cid}"><img class="img-responsive" th:src="${c.cphoto}" alt="image"></a>
 										</div>
 										<div class="txt-holder">
 											<ul class="list-unstyled rating-list">
